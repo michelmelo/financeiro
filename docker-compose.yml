@@ -4,18 +4,18 @@ services:
   app:
     build:
       args:
-        user: crater-user
+        user: financeiro-user
         uid: 1000
       context: ./
       dockerfile: Dockerfile
-    image: crater-php
+    image: financeiro-php
     restart: unless-stopped
     working_dir: /var/www/
     volumes:
       - ./:/var/www
       - ./docker-compose/php/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini:rw,delegated
     networks:
-      - crater
+      - financeiro
 
   db:
     image: mariadb
@@ -26,25 +26,25 @@ services:
       # and uncomment the line under this one.
       #- ./docker-compose/db/data:/var/lib/mysql:rw,delegated
     environment:
-      MYSQL_USER: crater
-      MYSQL_PASSWORD: crater
-      MYSQL_DATABASE: crater
-      MYSQL_ROOT_PASSWORD: crater
+      MYSQL_USER: financeiro
+      MYSQL_PASSWORD: financeiro
+      MYSQL_DATABASE: financeiro
+      MYSQL_ROOT_PASSWORD: financeiro
     ports:
       - '33006:3306'
     networks:
-      - crater
+      - financeiro
 
   nginx:
     image: nginx:1.17-alpine
     restart: unless-stopped
     ports:
-      - 80:80
+      - 8000:80
     volumes:
       - ./:/var/www
       - ./docker-compose/nginx:/etc/nginx/conf.d/
     networks:
-      - crater
+      - financeiro
 
   cron:
     build:
@@ -53,11 +53,11 @@ services:
     volumes:
       - ./:/var/www
     networks:
-      - crater
+      - financeiro
 
 volumes:
   db:
 
 networks:
-  crater:
+  financeiro:
     driver: bridge

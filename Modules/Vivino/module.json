@@ -1,0 +1,13 @@
+{
+  "name": "VivinoApi",
+  "alias": "vivinoapi",
+  "description": "",
+  "keywords": [],
+  "priority": 0,
+  "providers": [
+    "Modules\\VivinoApi\\Providers\\VivinoApiServiceProvider"
+  ],
+  "aliases": {},
+  "files": [],
+  "requires": []
+}

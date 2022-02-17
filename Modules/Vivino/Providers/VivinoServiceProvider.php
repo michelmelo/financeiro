@@ -2,10 +2,13 @@
 
 namespace Modules\Vivino\Providers;
 
+
 use Crater\Events\ModuleDisabledEvent;
 use Crater\Services\Module\ModuleFacade;
 use Illuminate\Support\ServiceProvider;
+use Modules\Vivino\Console\Commands\VivinoOrderUpdate;
 use Modules\Vivino\Listeners\ModuleDisabledListener;
+use Illuminate\Console\Scheduling\Schedule;
 
 class VivinoServiceProvider extends ServiceProvider
 {
@@ -28,12 +31,34 @@ class VivinoServiceProvider extends ServiceProvider
     {
         $this->registerTranslations();
         $this->registerConfig();
+        $this->registerCommands();
+        $this->registerSchedule();
         $this->registerViews();
         $this->registerMenu();
         $this->registerPublicFiles();
         $this->loadMigrationsFrom(module_path($this->moduleName, 'Database/Migrations'));
     }
+    /**
+     * Register the console commands
+     */
+    private function registerCommands()
+    {
+        $this->commands([
+            VivinoOrderUpdate::class
+        ]);
 
+
+    }
+    /**
+     * Register the schedule events
+     */
+    private function registerSchedule()
+    {
+        $this->app->booted(function () {
+            $schedule = $this->app->make(Schedule::class);
+            $schedule->command('update:orders')->everyFiveMinutes();
+        });
+    }
     /**
      * Register the service provider.
      *
@@ -124,7 +149,7 @@ class VivinoServiceProvider extends ServiceProvider
             'title'      => 'vivino.customer_portal_title',
             'group'      => '',
             'name'       => 'Vivino',
-            'link'       => '/admin/settings/vivino-api',
+            'link'       => '/admin/settings/vivino',
             'icon'       => 'TagIcon',
             'owner_only' => true,
             'ability'    => '',

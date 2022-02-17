@@ -1,11 +1,11 @@
 {
-  "name": "VivinoApi",
-  "alias": "vivinoapi",
+  "name": "Vivino",
+  "alias": "Vivino",
   "description": "",
   "keywords": [],
   "priority": 0,
   "providers": [
-    "Modules\\VivinoApi\\Providers\\VivinoApiServiceProvider"
+    "Modules\\Vivino\\Providers\\VivinoServiceProvider"
   ],
   "aliases": {},
   "files": [],

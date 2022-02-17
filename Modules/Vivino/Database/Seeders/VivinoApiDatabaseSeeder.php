@@ -1,11 +1,11 @@
 <?php
 
-namespace Modules\VivinoApi\Database\Seeders;
+namespace Modules\Vivino\Database\Seeders;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Seeder;
 
-class VivinoApiDatabaseSeeder extends Seeder
+class VivinoDatabaseSeeder extends Seeder
 {
     /**
      * Run the database seeds.

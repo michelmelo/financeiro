@@ -3,15 +3,11 @@
     :title="$t('vivino.customer_portal_title')"
     :description="$t('vivino.customer_portal_description')"
   >
- 
 
-    <ThemeSezlector
-      v-model="customerPortalSettings.customer_portal_theme"
-      class="mt-6"
-    />
 
-    
-    <BaseDivider class="my-8" />
+
+
+
 
   </BaseSettingCard>
 </template>

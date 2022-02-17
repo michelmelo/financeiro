@@ -9,7 +9,7 @@ module.exports = defineConfig({
     lib: {
       entry: path.resolve(__dirname, 'Resources/scripts/module.js'),
       name: 'MyLib',
-      fileName: (format) => `vivinoapi.${format}.js`,
+      fileName: (format) => `Vivino.${format}.js`,
     },
     outDir: './dist',
   },

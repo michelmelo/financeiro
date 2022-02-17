@@ -1,6 +1,6 @@
 <?php
 
-use Modules\VivinoApi\Http\Controllers\VivinoApiController;
+use Modules\Vivino\Http\Controllers\OrdersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,8 +13,8 @@ use Modules\VivinoApi\Http\Controllers\VivinoApiController;
 |
 */
 
-Route::get('index', [VivinoApiController::class, 'index']);
-Route::get('show/{id}', [VivinoApiController::class, 'show']);
-Route::get('update/{id}', [VivinoApiController::class, 'update']);
-Route::get('vivino/purchaseorder/{id}', [VivinoApiController::class, 'purchaseOrder']);
+Route::get('index', [OrdersController::class, 'index']);
+Route::get('show/{id}', [OrdersController::class, 'show']);
+Route::get('update/{id}', [OrdersController::class, 'update']);
+Route::get('vivino/purchaseorder/{id}', [OrdersController::class, 'purchaseOrder']);
 

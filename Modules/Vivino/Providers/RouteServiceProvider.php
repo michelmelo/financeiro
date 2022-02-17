@@ -47,7 +47,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapWebRoutes()
     {
-        Route::prefix('m/vivino-api')
+        Route::prefix('vivino')
             ->middleware('web')
             ->namespace($this->moduleNamespace)
             ->group(module_path('Vivino', '/Routes/web.php'));
@@ -62,7 +62,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapApiRoutes()
     {
-        Route::prefix('api/m/vivino-api')
+        Route::prefix('api/vivino')
             ->middleware('api')
             ->namespace($this->moduleNamespace)
             ->group(module_path('Vivino', '/Routes/api.php'));

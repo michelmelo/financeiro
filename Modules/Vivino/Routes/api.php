@@ -1,6 +1,6 @@
 <?php
 
-use Modules\VivinoApi\Http\Controllers\VivinoApiController;
+use Modules\Vivino\Http\Controllers\OrdersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,9 +12,13 @@ use Modules\VivinoApi\Http\Controllers\VivinoApiController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
-Route::get('index', [VivinoApiController::class, 'index']);
-Route::get('show/{id}', [VivinoApiController::class, 'show']);
-Route::get('update/{id}', [VivinoApiController::class, 'update']);
-Route::get('vivino/purchaseorder/{id}', [VivinoApiController::class, 'purchaseOrder']);
+Route::middleware(['auth:sanctum', 'company'])->group(function () {
+    Route::middleware(['bouncer'])->prefix('orders')->group(function () {
+        Route::get('paginate', [OrdersController::class, 'paginate']);
+        Route::get('index', [OrdersController::class, 'index']);
+        Route::get('show/{id}', [OrdersController::class, 'show']);
+        Route::get('update/{id}', [OrdersController::class, 'update']);
+        Route::get('vivino/purchaseorder/{id}', [OrdersController::class, 'purchaseOrder']);
+    });
+});
 

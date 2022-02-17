@@ -1,4 +1,4 @@
-// import axios from 'axios'
+import axios from 'axios'
 import { useNotificationStore } from '@/scripts/stores/notification'
 const { defineStore } = window.pinia
 
@@ -18,5 +18,21 @@ export const useVivinoStore = defineStore({
           })
       })
     },
+    paginate(){
+      return new Promise((resolve, reject) => {
+        window.axios
+          .get(`/api/vivino/orders/paginate`)
+          .then((response) => {
+            console.log(response)
+            resolve(response)
+          })
+          .catch((err) => {
+            console.log(err)
+            handleError(err)
+            reject(err)
+          })
+      })
+    }
+
   },
 })

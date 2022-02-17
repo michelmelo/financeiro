@@ -31,7 +31,7 @@ services:
       MYSQL_DATABASE: financeiro
       MYSQL_ROOT_PASSWORD: financeiro
     ports:
-      - '33006:3306'
+      - '3306:3306'
     networks:
       - financeiro
 

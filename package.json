@@ -4,6 +4,7 @@
     "dev": "vite",
     "build": "vite build",
     "serve": "vite preview",
+    "watch": "vite build --watch",
     "test": "eslint ./resources/scripts --ext .js,.vue"
   },
   "devDependencies": {

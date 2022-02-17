@@ -15,3 +15,7 @@ Homestead.yaml
 .gitkeep
 /public/docs
 /.scribe
+
+.DS_Store
+
+*.cache

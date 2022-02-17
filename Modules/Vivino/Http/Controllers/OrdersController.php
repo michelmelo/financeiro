@@ -5,6 +5,8 @@ namespace Modules\Vivino\Http\Controllers;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Modules\Vivino\Http\Resources\VivinoOrderResources;
+use Modules\Vivino\Models\VivinoOrder;
 
 class OrdersController extends Controller
 {
@@ -15,6 +17,19 @@ class OrdersController extends Controller
     public function index()
     {
         return view('vivino::index');
+    }
+    /**
+     * Display a listing of the resource.
+     * @return Renderable
+     */
+    public function paginate()
+    {
+        $paginate = VivinoOrder::paginate(20);
+
+        return (VivinoOrderResources::collection($paginate))
+            ->additional(['meta' => [
+                'customer_total_count' => VivinoOrder::count(),
+            ]]);
     }
 
     /**
